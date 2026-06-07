@@ -1,603 +1,166 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BACK TO DAKAR — Specialized Offroad Support & Logistics</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>BACK TO DAKAR</title>
+<meta name="description" content="BACK TO DAKAR">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--sand:#E8C87A;--dune:#C9A227;--ember:#D4521A;--horizon:#E87040;--night:#0D0A05;--midnight:#1A1208;--twilight:#2C1F0A;--fog:#F5EDD8;--cream:#FAF3E0;--sky:#7BAFD4;}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--night);color:var(--fog);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s;}
-nav.scrolled{background:rgba(13,10,5,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,200,122,0.15);}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.15em;color:var(--sand);text-decoration:none;}
-.nav-logo span{color:var(--ember);}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-.nav-links a{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--fog);text-decoration:none;opacity:0.85;transition:opacity 0.3s;}
-.nav-links a:hover{opacity:1;color:var(--sand);}
-.lang-switcher{display:flex;align-items:center;gap:0.3rem;margin-left:1.5rem;}
-.lang-btn{background:none;border:none;font-family:'Space Mono',monospace;font-size:0.65rem;color:rgba(245,237,216,0.4);cursor:pointer;padding:0.3rem 0.4rem;transition:color 0.3s;}
-.lang-btn:hover,.lang-btn.active{color:var(--sand);}
-.lang-sep{color:rgba(245,237,216,0.15);font-size:0.6rem;}
-#hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(180,90,20,0.25) 0%,transparent 60%),linear-gradient(180deg,var(--night) 0%,var(--midnight) 50%,var(--twilight) 100%);}
-.hero-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(180deg,transparent,var(--night));clip-path:polygon(0 100%,0 55%,10% 40%,22% 52%,35% 25%,48% 45%,58% 18%,70% 40%,80% 26%,90% 42%,100% 32%,100% 100%);}
-.hero-stars{position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 15% 10%,rgba(232,200,122,0.8),transparent),radial-gradient(1px 1px at 40% 18%,rgba(245,237,216,0.5),transparent),radial-gradient(1.5px 1.5px at 65% 8%,rgba(232,200,122,0.7),transparent),radial-gradient(1px 1px at 80% 20%,rgba(245,237,216,0.5),transparent),radial-gradient(1px 1px at 92% 12%,rgba(245,237,216,0.4),transparent);}
-.hero-content{position:relative;z-index:2;padding:0 5rem;max-width:900px;animation:heroIn 1.2s ease forwards;}
-@keyframes heroIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
-.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--dune);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
-.hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--dune);}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,11rem);line-height:0.9;color:var(--cream);}
-.hero-title .t2{color:var(--sand);display:block;}
-.hero-title .t3{-webkit-text-stroke:1px var(--ember);-webkit-text-fill-color:transparent;}
-.hero-tagline{font-size:1.3rem;font-weight:300;font-style:italic;color:rgba(245,237,216,0.9);margin:1.5rem 0 2.5rem;max-width:500px;line-height:1.6;}
-.hero-btns{display:flex;gap:1.5rem;flex-wrap:wrap;}
-.btn-p{background:var(--ember);color:var(--cream);padding:0.9rem 2.2rem;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background 0.3s;}
-.btn-p:hover{background:var(--horizon);}
-.btn-o{background:transparent;color:var(--sand);padding:0.9rem 2.2rem;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(232,200,122,0.4);transition:border-color 0.3s;}
-.btn-o:hover{border-color:var(--sand);}
-.stats-bar{background:var(--twilight);border-top:1px solid rgba(232,200,122,0.1);border-bottom:1px solid rgba(232,200,122,0.1);padding:2rem 5rem;display:grid;grid-template-columns:repeat(4,1fr);}
-.stat-item{text-align:center;padding:1rem;border-right:1px solid rgba(232,200,122,0.1);}
-.stat-item:last-child{border-right:none;}
-.stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--sand);display:block;}
-.stat-l{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,237,216,0.65);display:block;margin-top:0.3rem;}
-section{padding:6rem 5rem;}
-.eyebrow{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--dune);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem;}
-.eyebrow::before{content:'';display:block;width:25px;height:1px;background:var(--dune);}
-.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--cream);line-height:1;margin-bottom:1.2rem;}
-.sec-sub{font-size:1.1rem;font-weight:300;font-style:italic;color:rgba(245,237,216,0.8);max-width:540px;line-height:1.7;margin-bottom:3rem;}
-#about{background:var(--midnight);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.about-visual{background:linear-gradient(135deg,rgba(180,90,20,0.25),rgba(44,31,10,0.8));border:1px solid rgba(232,200,122,0.15);padding:3rem;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;}
-.about-visual::before{content:'🏔';position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);font-size:7rem;opacity:0.1;}
-.av-tag{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;color:rgba(232,200,122,0.5);margin-bottom:0.5rem;}
-.av-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--sand);}
-.about-text p{font-size:1.05rem;line-height:1.9;color:rgba(245,237,216,0.9);margin-bottom:1.5rem;}
-.about-hl{font-size:1.3rem;font-style:italic;color:var(--sand);border-left:3px solid var(--ember);padding-left:1.5rem;margin:2rem 0;line-height:1.5;}
-#services{background:var(--night);}
-.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2rem;}
-.svc-card{background:var(--midnight);padding:2.5rem;position:relative;overflow:hidden;transition:background 0.4s;}
-.svc-card:hover{background:var(--twilight);}
-.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--ember);transition:height 0.4s;}
-.svc-card:hover::before{height:100%;}
-.svc-n{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(232,200,122,0.06);position:absolute;top:1rem;right:1.5rem;}
-.svc-icon{font-size:1.8rem;margin-bottom:1.2rem;display:block;}
-.svc-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--sand);margin-bottom:0.8rem;}
-.svc-desc{font-size:0.98rem;line-height:1.8;color:rgba(245,237,216,0.82);margin-bottom:1.5rem;}
-.tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
-.tag{font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border:1px solid rgba(232,200,122,0.2);color:rgba(232,200,122,0.8);}
-#route{background:var(--twilight);}
-.route-tl{display:flex;align-items:flex-start;justify-content:space-between;position:relative;margin-top:3.5rem;}
-.route-tl::before{content:'';position:absolute;top:1.6rem;left:2rem;right:2rem;height:1px;background:linear-gradient(90deg,var(--ember),var(--dune),var(--sand),var(--sky));}
-.r-stop{flex:1;text-align:center;position:relative;padding-top:3.5rem;}
-.r-dot{position:absolute;top:1rem;left:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--ember);border:2px solid var(--night);box-shadow:0 0 0 3px rgba(216,82,26,0.3);}
-.r-dot.s{background:var(--sky);}
-.r-dot.e{background:var(--sand);}
-.r-flag{font-size:1.4rem;display:block;margin-bottom:0.3rem;}
-.r-city{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--cream);display:block;}
-.r-ctry{font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,237,216,0.65);display:block;margin-top:0.2rem;}
-.route-info{margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.ri{background:rgba(13,10,5,0.4);border:1px solid rgba(232,200,122,0.1);padding:1.5rem;text-align:center;}
-.ri-val{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--sand);display:block;}
-.ri-lbl{font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,237,216,0.65);margin-top:0.3rem;display:block;}
-#services2{background:var(--midnight);}
-.s2-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;}
-.s2c{border:1px solid rgba(232,200,122,0.1);padding:2rem;background:rgba(44,31,10,0.3);transition:border-color 0.3s;}
-.s2c:hover{border-color:rgba(232,200,122,0.3);}
-.s2-icon{font-size:1.5rem;margin-bottom:1rem;display:block;}
-.s2-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--sand);margin-bottom:0.6rem;}
-.s2-desc{font-size:0.95rem;line-height:1.7;color:rgba(245,237,216,0.8);}
-#contact{background:var(--twilight);display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;}
-.ci p{font-size:1.05rem;line-height:1.8;color:rgba(245,237,216,0.85);margin-bottom:2.5rem;}
-.cd{list-style:none;display:flex;flex-direction:column;gap:1rem;}
-.cd li{display:flex;align-items:center;gap:1rem;font-family:'Space Mono',monospace;font-size:0.65rem;color:rgba(245,237,216,0.85);}
-.cd .ico{width:34px;height:34px;border:1px solid rgba(232,200,122,0.2);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;}
-.cf{background:rgba(13,10,5,0.6);border:1px solid rgba(232,200,122,0.1);padding:2.5rem;}
-.cf-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--sand);margin-bottom:2rem;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-.fg{margin-bottom:1.2rem;}
-.fg label{font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(232,200,122,0.9);display:block;margin-bottom:0.4rem;}
-.fg input,.fg select,.fg textarea{width:100%;background:rgba(44,31,10,0.5);border:1px solid rgba(232,200,122,0.15);color:var(--fog);padding:0.8rem 1rem;font-family:'Cormorant Garamond',serif;font-size:1rem;outline:none;transition:border-color 0.3s;appearance:none;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(232,200,122,0.8);}
-.fg textarea{resize:vertical;min-height:100px;}
-.fg select option{background:var(--twilight);}
-.fsub{width:100%;background:var(--ember);color:var(--cream);padding:1.1rem;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.3s;margin-top:0.5rem;}
-.fsub:hover{background:var(--horizon);}
-.flegal{font-size:0.75rem;color:rgba(245,237,216,0.55);margin-top:0.8rem;font-style:italic;}
-.fsuccess{display:none;padding:1.5rem;background:rgba(30,80,30,0.3);border:1px solid rgba(100,200,100,0.3);margin-top:1rem;}
-.fsuccess p{color:#90ee90;font-family:'Space Mono',monospace;font-size:0.7rem;}
-footer{background:var(--night);border-top:1px solid rgba(232,200,122,0.08);padding:3.5rem 5rem 2.5rem;}
-.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3.5rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(232,200,122,0.08);}
-.fb .nav-logo{font-size:1.8rem;display:block;margin-bottom:0.8rem;}
-.fb p{font-size:0.85rem;line-height:1.7;color:rgba(245,237,216,0.6);max-width:260px;}
-.fc h4{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--dune);margin-bottom:1.2rem;}
-.fc ul{list-style:none;}
-.fc ul li{margin-bottom:0.6rem;}
-.fc ul li a{font-size:0.85rem;color:rgba(245,237,216,0.65);text-decoration:none;transition:color 0.3s;}
-.fc ul li a:hover{color:var(--sand);}
-.fb-bot{display:flex;justify-content:space-between;align-items:center;}
-.fc2{font-family:'Space Mono',monospace;font-size:0.55rem;color:rgba(245,237,216,0.5);}
-.reveal{opacity:0;transform:translateY(25px);transition:opacity 0.7s,transform 0.7s;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-@media(max-width:900px){
-  nav{padding:1.2rem 1.5rem;}
-  .nav-links{display:none;}
-  section{padding:4rem 1.5rem;}
-  .hero-content{padding:0 1.5rem;}
-  #about,#contact{grid-template-columns:1fr;}
-  .about-visual{display:none;}
-  .stats-bar{grid-template-columns:repeat(2,1fr);padding:1.5rem;}
-  .svc-grid,.s2-grid{grid-template-columns:1fr;}
-  .ft{grid-template-columns:1fr;}
-  .frow{grid-template-columns:1fr;}
-  .route-tl{flex-wrap:wrap;gap:1rem;}
-  .route-info{grid-template-columns:1fr;}
-}
+  :root{
+    --ink:#4a3826;        /* deep warm brown */
+    --ink-dim:#7c6446;    /* muted brown */
+    --ink-faint:rgba(63,51,32,.6);
+    --line:rgba(74,56,38,.22);
+    --ochre:#8a5a1f;      /* rich desert accent */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    height:100vh;overflow:hidden;position:relative;
+    color:var(--ink);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    background:linear-gradient(to bottom,#f5e7c6 0%,#efd6a6 38%,#e6c489 68%,#deb678 100%);
+  }
+  /* soft desert sun */
+  .sun{
+    position:absolute;z-index:0;top:6%;left:50%;transform:translateX(-50%);
+    width:min(64vmin,520px);aspect-ratio:1;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle,rgba(255,248,228,.95) 0%,rgba(255,240,205,.45) 32%,rgba(255,236,196,0) 70%);
+    opacity:0;animation:glow 1.6s ease .2s forwards;
+  }
+  /* layered dunes */
+  .dune{position:absolute;z-index:1;left:50%;border-radius:50%;pointer-events:none;}
+  .d1{width:210vw;height:92vh;bottom:-60vh;transform:translateX(-52%);background:#dcb673;}
+  .d2{width:178vw;height:82vh;bottom:-53vh;transform:translateX(-44%);background:#cea052;}
+  .d3{width:158vw;height:72vh;bottom:-46vh;transform:translateX(-56%);background:#bd8a44;}
+  .dune{opacity:0;animation:rise 1.3s ease forwards;}
+  .d1{animation-delay:.55s}.d2{animation-delay:.7s}.d3{animation-delay:.85s}
 
-.hero-photo{position:absolute;inset:0;z-index:0;}
-.hero-photo img{width:100%;height:100%;object-fit:cover;opacity:0.35;filter:saturate(1.2);}
-.about-visual img{width:100%;height:100%;object-fit:cover;border-radius:0;}
-.photo-gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-top:2rem;}
-.photo-gallery img{width:100%;height:280px;object-fit:cover;transition:transform 0.5s,filter 0.5s;filter:saturate(1.1);cursor:pointer;}
-.photo-gallery img:hover{transform:scale(1.03);filter:saturate(1.3);}
-.photo-gallery .wide{grid-column:1/-1;height:420px;}
-.photo-gallery .double{grid-column:span 2;height:320px;}
-.pg-strip{margin:0;padding:0;overflow:hidden;display:flex;align-items:stretch;}
-.pg-strip.left{flex-direction:row;}
-.pg-strip.right{flex-direction:row-reverse;}
-.pg-strip img{width:55%;height:400px;object-fit:cover;display:block;cursor:pointer;flex-shrink:0;}
-.pg-data{width:45%;display:flex;flex-direction:column;justify-content:center;padding:3rem 4rem;background:var(--midnight);}
-.pd-label{font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--dune);display:block;margin-bottom:0.3rem;}
-.pd-val{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--sand);line-height:1;display:block;margin-bottom:1.8rem;}
-.pd-val:last-child{margin-bottom:0;}
-.pg-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;align-items:center;justify-content:center;}
-.pg-lightbox.open{display:flex;}
-.pg-lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;}
-.pg-close{position:absolute;top:1.5rem;right:2rem;color:#F5EDD8;font-size:2rem;cursor:pointer;font-family:'Space Mono',monospace;}
-.gallery-sep{margin:1.5rem 0 0.8rem;display:flex;align-items:center;gap:1rem;}
-.gallery-sep::after{content:'';flex:1;height:1px;background:rgba(232,200,122,0.15);}
-.gallery-zone-label{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#C9A227;}
+  /* subtle grain */
+  body::after{
+    content:"";position:fixed;inset:-150%;z-index:2;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 7s steps(6) infinite;
+  }
+  @keyframes grain{0%{transform:translate(0,0)}16%{transform:translate(-4%,3%)}33%{transform:translate(3%,-4%)}50%{transform:translate(-3%,2%)}66%{transform:translate(4%,3%)}83%{transform:translate(-2%,-3%)}100%{transform:translate(0,0)}}
 
-#humanite{background:var(--twilight);padding:5rem;text-align:center;border-top:1px solid rgba(232,200,122,0.1);border-bottom:1px solid rgba(232,200,122,0.1);}
-.hum-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.5rem);color:var(--sand);letter-spacing:0.1em;margin-bottom:1.5rem;}
-.hum-quote{font-size:1.4rem;font-style:italic;color:rgba(245,237,216,0.85);max-width:700px;margin:0 auto;line-height:1.8;}
-.hum-line{width:60px;height:1px;background:var(--ember);margin:2rem auto;}
+  .wrap{
+    position:relative;z-index:5;height:100%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:clamp(24px,6vw,64px);padding-bottom:22vh;text-align:center;
+  }
+  .tag{
+    font-size:clamp(9px,1.6vw,11px);letter-spacing:.42em;text-transform:uppercase;
+    color:var(--ink-dim);margin-bottom:clamp(26px,6vh,52px);
+    opacity:0;animation:rise 1s ease .15s forwards;
+  }
+  .mark{font-family:"Oswald",sans-serif;line-height:.92;}
+  .mark .top{
+    display:block;font-weight:300;font-size:clamp(20px,5vw,34px);
+    letter-spacing:.6em;text-indent:.6em;color:var(--ink);
+    opacity:0;animation:rise 1s ease .3s forwards;
+  }
+  .mark .main{
+    display:block;font-weight:700;font-size:clamp(56px,16vw,162px);letter-spacing:.05em;
+    margin-top:clamp(4px,1vh,10px);color:var(--ink);
+    text-shadow:0 2px 22px rgba(120,80,30,.18);
+    opacity:0;animation:rise 1.1s ease .45s forwards;
+  }
+  .horizon{
+    width:0;height:2px;margin:clamp(24px,5vh,44px) 0;
+    background:linear-gradient(90deg,transparent,var(--ochre),transparent);
+    box-shadow:0 0 12px 1px rgba(138,90,31,.3);
+    animation:stretch 1.4s cubic-bezier(.2,.7,.2,1) .95s forwards;
+  }
+  .soon{
+    height:1.7em;display:flex;align-items:center;justify-content:center;gap:.85em;
+    opacity:0;animation:rise 1s ease 1.2s forwards;
+  }
+  .soon .code{
+    font-size:clamp(10px,1.7vw,12px);font-weight:500;letter-spacing:.22em;
+    color:var(--ochre);border:1px solid var(--line);padding:.28em .5em;border-radius:2px;
+    transition:opacity .5s ease;
+  }
+  .soon .phrase{
+    font-family:"Oswald",sans-serif;font-weight:500;
+    font-size:clamp(16px,3.4vw,26px);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink);transition:opacity .5s ease;
+  }
+  .soon.fade .code,.soon.fade .phrase{opacity:0}
+  .foot{
+    position:fixed;left:0;right:0;bottom:clamp(16px,4vh,30px);z-index:6;
+    display:flex;flex-direction:column;align-items:center;gap:.6em;
+    opacity:0;animation:rise 1s ease 1.55s forwards;
+  }
+  .foot a{
+    color:#3f3320;text-decoration:none;font-size:clamp(11px,2vw,13px);letter-spacing:.16em;
+    border-bottom:1px solid rgba(63,51,32,.35);padding-bottom:2px;transition:opacity .3s ease;
+  }
+  .foot a:hover{opacity:.65}
+  .foot .coord{font-size:clamp(8px,1.5vw,10px);letter-spacing:.3em;color:rgba(63,51,32,.6);text-transform:uppercase;}
+
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes glow{from{opacity:0}to{opacity:1}}
+  @keyframes stretch{from{width:0}to{width:min(280px,52vw)}}
+  .d1{animation-name:duneRise}.d2{animation-name:duneRise}.d3{animation-name:duneRise}
+  @keyframes duneRise{from{opacity:0;transform:translateX(var(--tx,-50%)) translateY(24px)}to{opacity:1}}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .sun,.tag,.mark .top,.mark .main,.soon,.foot,.dune{opacity:1}
+    .horizon{width:min(280px,52vw)}
+    body::after{display:none}
+  }
 </style>
 </head>
 <body>
+  <div class="sun" aria-hidden="true"></div>
+  <div class="dune d1" aria-hidden="true"></div>
+  <div class="dune d2" aria-hidden="true"></div>
+  <div class="dune d3" aria-hidden="true"></div>
 
-<nav id="nav">
-  <a class="nav-logo" href="#">BACK <span>TO</span> DAKAR</a>
-  <ul class="nav-links">
-    <li><a href="#about" data-i18n="nav_about">Histoire</a></li>
-    <li><a href="#services" data-i18n="nav_services">Services</a></li>
-    <li><a href="#route" data-i18n="nav_route">La Route</a></li>
-    <li><a href="#services2" data-i18n="nav_s2">Expertise</a></li>
-    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-  </ul>
-  <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-    <span class="lang-sep">|</span>
-    <button class="lang-btn" onclick="setLang('de')">DE</button>
-    <span class="lang-sep">|</span>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
-  </div>
-</nav>
-
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-photo">
-    <img src="https://res.cloudinary.com/don1uwzkz/image/upload/v1779175943/IMG_20190128_112747_n7ewwu.jpg" alt="BMW GS Sahara">
-  </div>
-  <div class="hero-stars"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow" data-i18n="h_eye">Autriche → Sénégal — Pistes Historiques Paris-Dakar</div>
-    <h1 class="hero-title">
-      <span>BACK</span>
-      <span class="t2">TO</span>
-      <span class="t3">DAKAR</span>
+  <main class="wrap">
+    <div class="tag">Europe&nbsp;&middot;&nbsp;Sénégal</div>
+    <h1 class="mark">
+      <span class="top">Back&nbsp;to</span>
+      <span class="main">DAKAR</span>
     </h1>
-    <p class="hero-tagline" data-i18n="h_tag">Né à Dakar, basé à Linz — je vous ramène là où tout a commencé.</p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-p" data-i18n="h_cta1">Découvrir nos services</a>
-      <a href="#contact" class="btn-o" data-i18n="h_cta2">Nous contacter</a>
+    <div class="horizon"></div>
+    <div class="soon" id="soon" aria-live="polite">
+      <span class="code" id="code">DE</span>
+      <span class="phrase" id="phrase">Demnächst verfügbar</span>
     </div>
-  </div>
-</section>
+  </main>
 
-<div class="stats-bar">
-  <div class="stat-item reveal"><span class="stat-n">12.500</span><span class="stat-l" data-i18n="s1">Kilomètres parcourus</span></div>
-  <div class="stat-item reveal"><span class="stat-n">28</span><span class="stat-l" data-i18n="s2">Jours d’expédition</span></div>
-  <div class="stat-item reveal"><span class="stat-n">4</span><span class="stat-l" data-i18n="s3">Pays traversés</span></div>
-  <div class="stat-item reveal"><span class="stat-n">8</span><span class="stat-l" data-i18n="s4">Participants max</span></div>
-</div>
-
-
-<div class="pg-strip left reveal">
-  <img src="https://res.cloudinary.com/don1uwzkz/image/upload/w_1200,f_auto,q_auto/v1779344737/IMG_20190208_141017_wmoafn.jpg" alt="Rétroviseur moto piste Maroc" onclick="openLightbox(this.src)">
-  <div class="pg-data">
-    <span class="pd-label">Distance totale</span>
-    <span class="pd-val">12.500 km</span>
-    <span class="pd-label">Corridor</span>
-    <span class="pd-val">Linz → Dakar</span>
-    <span class="pd-label">Expérience terrain</span>
-    <span class="pd-val">+20 ans</span>
-  </div>
-</div>
-<section id="about">
-  <div class="about-visual reveal" style="padding:0;overflow:hidden;">
-    <img src="https://res.cloudinary.com/don1uwzkz/image/upload/v1779178977/Screenshot_20260519_101313_Photos_1_laorbo.jpg" alt="BMW GS terrain" style="width:100%;height:100%;object-fit:cover;min-height:380px;">
-  </div>
-  <div class="about-text reveal">
-    <div class="eyebrow" data-i18n="a_eye">Notre Histoire</div>
-    <h2 class="sec-title" data-i18n="a_title">UNE LÉGITIMITÉ<br>INCONTESTABLE</h2>
-    <p data-i18n="a_p1">Né à Dakar et établi en Autriche, le fondateur de BACK TO DAKAR a grandi entre deux mondes. Il connaît ces pistes depuis l'enfance — les routes du Sénégal, les pistes de Mauritanie, les dunes du Sahara marocain.</p>
-    <p data-i18n="a_p2">BACK TO DAKAR n’est pas une agence de voyage. C’est un service de support logistique spécialisé — vous décidez où vous allez, nous sommes là pour vous accompagner en toute sécurité.</p>
-    <blockquote class="about-hl" data-i18n="a_quote">"Né à Dakar, basé à Linz — je vous ramène là où tout a commencé."</blockquote>
-    <a href="#contact" class="btn-p" data-i18n="a_cta">Nous rejoindre</a>
-  </div>
-</section>
-
-<section id="services">
-  <div class="eyebrow reveal" data-i18n="sv_eye">Nos Services Principaux</div>
-  <h2 class="sec-title reveal" data-i18n="sv_title">SUPPORT LOGISTIQUE<br>OFFROAD & MOTO</h2>
-  <div class="svc-grid">
-    <div class="svc-card reveal">
-      <div class="svc-n">01</div>
-      
-      <h3 class="svc-title" data-i18n="sv1_t">Travel Support Moto</h3>
-      <p class="svc-desc" data-i18n="sv1_d">Votre groupe de motards roule librement — nous vous accompagnons avec notre Toyota Hilux et remorque HUMER (6 motos). Bagages, pièces de rechange, sécurité terrain : vous avancez l’esprit libre en Europe et en Afrique.</p>
-      <div class="tags">
-        <span class="tag" data-i18n="sv1_t1">EU + Afrique</span>
-        <span class="tag" data-i18n="sv1_t2">6 motos max</span>
-        <span class="tag" data-i18n="sv1_t3">Hilux + HUMER</span>
-        <span class="tag" data-i18n="sv1_t4">Devis sur demande</span>
-      </div>
-    </div>
-    <div class="svc-card reveal">
-      <div class="svc-n">02</div>
-      
-      <h3 class="svc-title" data-i18n="sv2_t">Expéditions Afrique</h3>
-      <p class="svc-desc" data-i18n="sv2_d">Support logistique complet pour vos expéditions sur les pistes historiques du Paris-Dakar. De l'Autriche au Sénégal en passant par le Maroc et la Mauritanie — avec un guide qui connaît ces terres depuis l'enfance.</p>
-      <div class="tags">
-        <span class="tag">AT → MA → MR → SN</span>
-        <span class="tag" data-i18n="sv2_t1">28 jours</span>
-        <span class="tag" data-i18n="sv2_t2">Max 8 personnes</span>
-        <span class="tag" data-i18n="sv2_t3">Devis sur demande</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<div class="pg-strip right reveal">
-  <img src="https://res.cloudinary.com/don1uwzkz/image/upload/w_1200,f_auto,q_auto/v1779344739/DSCN8495_ugfps1.jpg" alt="Toyota Prado dunes Sahara" onclick="openLightbox(this.src)">
-  <div class="pg-data">
-    <span class="pd-label">Zone</span>
-    <span class="pd-val">Sahara</span>
-    <span class="pd-label">Corridor</span>
-    <span class="pd-val">MA → MR</span>
-    <span class="pd-label">Destination</span>
-    <span class="pd-val">Sénégal</span>
-  </div>
-</div>
-<section id="route">
-  <div class="eyebrow reveal" data-i18n="r_eye">L’Itinéraire</div>
-  <h2 class="sec-title reveal" data-i18n="r_title">LA ROUTE<br>LÉGENDAIRE</h2>
-  <p class="sec-sub reveal" data-i18n="r_sub">~12.500 km sur les pistes historiques du Paris-Dakar, à travers 4 pays et des paysages inoubliables.</p>
-  <div class="route-tl">
-    <div class="r-stop reveal"><div class="r-dot s"></div><span class="r-flag">🇦🇹</span><span class="r-city">LINZ</span><span class="r-ctry" data-i18n="r1">Autriche — Départ</span></div>
-    <div class="r-stop reveal"><div class="r-dot"></div><span class="r-flag">🇪🇸</span><span class="r-city">ALGÉSIRAS</span><span class="r-ctry" data-i18n="r2">Espagne — Ferry</span></div>
-    <div class="r-stop reveal"><div class="r-dot"></div><span class="r-flag">🇲🇦</span><span class="r-city">MAROC</span><span class="r-ctry" data-i18n="r3">Pistes du Sahara</span></div>
-    <div class="r-stop reveal"><div class="r-dot"></div><span class="r-flag">🇲🇷</span><span class="r-city">MAURITANIE</span><span class="r-ctry" data-i18n="r4">Désert de l’Erg</span></div>
-    <div class="r-stop reveal"><div class="r-dot e"></div><span class="r-flag">🇸🇳</span><span class="r-city">DAKAR</span><span class="r-ctry" data-i18n="r5">Sénégal — Arrivée</span></div>
-  </div>
-  <div class="route-info">
-    <div class="ri reveal"><span class="ri-val">~12.500 km</span><span class="ri-lbl" data-i18n="ri1">Distance aller-retour</span></div>
-    <div class="ri reveal"><span class="ri-val">4 pays</span><span class="ri-lbl">AT — MA — MR — SN</span></div>
-    <div class="ri reveal"><span class="ri-val">~28 jours</span><span class="ri-lbl" data-i18n="ri2">Circuit complet</span></div>
-  </div>
-</section>
-
-
-<div class="pg-strip left reveal">
-  <img src="https://res.cloudinary.com/don1uwzkz/image/upload/w_1200,f_auto,q_auto/v1779343638/D_clean_x6kg0g.jpg" alt="Motos BMW GS et véhicule support piste Maroc" onclick="openLightbox(this.src)">
-  <div class="pg-data">
-    <span class="pd-label">Capacité</span>
-    <span class="pd-val">6 motos</span>
-    <span class="pd-label">Véhicule</span>
-    <span class="pd-val">Hilux 4×4</span>
-    <span class="pd-label">Mode</span>
-    <span class="pd-val">Support terrain</span>
-  </div>
-</div>
-<section id="services2">
-  <div class="eyebrow reveal" data-i18n="e_eye">Services Complémentaires</div>
-  <h2 class="sec-title reveal" data-i18n="e_title">EXPERTISE<br>TERRAIN</h2>
-  <div class="s2-grid">
-    <div class="s2c reveal"><div class="s2-title" data-i18n="e1_t">Scouting & Reconnaissance</div><p class="s2-desc" data-i18n="e1_d">Repérage de pistes, validation de parcours, préparation de roadbooks de navigation pour clubs et organisateurs d'événements.</p></div>
-    <div class="s2c reveal"><div class="s2-title" data-i18n="e2_t">Support Événement Offroad</div><p class="s2-desc" data-i18n="e2_d">Assistance logistique, sécurité terrain et support bivouac pour vos événements offroad, rallyes amateurs et raids.</p></div>
-    <div class="s2c reveal"><div class="s2-title" data-i18n="e3_t">Assistance Bagages</div><p class="s2-desc" data-i18n="e3_d">Transport de bagages pour les groupes moto qui préfèrent voyager léger. Votre moto reste agile, vos affaires voyagent en sécurité.</p></div>
-    <div class="s2c reveal"><div class="s2-title" data-i18n="e4_t">Partenariats Clubs</div><p class="s2-desc" data-i18n="e4_d">Nous collaborons avec les clubs moto et associations offroad. Contactez-nous pour discuter d'un partenariat adapté à votre structure.</p></div>
-  </div>
-</section>
-<div class="pg-lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="pg-close" onclick="closeLightbox()">✕</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-
-<div class="pg-strip right reveal">
-  <img src="https://res.cloudinary.com/don1uwzkz/image/upload/w_1200,f_auto,q_auto/v1779344748/IMG_20190208_144219_tnhlr3.jpg" alt="BMW GS col Atlas Maroc" onclick="openLightbox(this.src)">
-  <div class="pg-data">
-    <span class="pd-label">Zone</span>
-    <span class="pd-val">Atlas</span>
-    <span class="pd-label">Altitude</span>
-    <span class="pd-val">2.504 m</span>
-    <span class="pd-label">Pays</span>
-    <span class="pd-val">Maroc</span>
-  </div>
-</div>
-<section id="humanite">
-  <div class="reveal">
-    <div class="eyebrow" style="justify-content:center;" data-i18n="h_eye">Aventure & Humanité</div>
-    <div class="hum-title" data-i18n="h_title">AVENTURE & HUMANITÉ</div>
-    <div class="hum-line"></div>
-    <p class="hum-quote" data-i18n="h_quote">"Cultivons l’humain qui sommeille en nous, dans un esprit de partage et d’humanité."</p>
-  </div>
-</section>
-
-<div class="pg-strip left reveal">
-  <img src="https://res.cloudinary.com/don1uwzkz/image/upload/w_1200,f_auto,q_auto/v1779344745/DSCN8158_nulltt.jpg" alt="GPS moto route désert" onclick="openLightbox(this.src)">
-  <div class="pg-data">
-    <span class="pd-label">Destination</span>
-    <span class="pd-val">Dakar</span>
-    <span class="pd-label">GPS</span>
-    <span class="pd-val" style="font-size:1.1rem;line-height:1.5;">14°49'18"N<br>17°14'09"W</span>
-    <span class="pd-label" style="margin-top:0.5rem;">Lac Rose — Dakar</span>
-  </div>
-</div>
-<section id="contact">
-  <div class="ci reveal">
-    <div class="eyebrow" data-i18n="c_eye">Nous Rejoindre</div>
-    <h2 class="sec-title" data-i18n="c_title">PRÊT POUR<br>L’AVENTURE ?</h2>
-    <p data-i18n="c_p">Que vous souhaitiez un devis, rejoindre une expédition ou simplement en savoir plus — nous sommes là. Chaque aventure commence par une conversation.</p>
-    <ul class="cd">
-      <li><span class="ico">—</span>Région de Linz, Autriche</li>
-      <li><span class="ico">T</span>+43 688 60253305</li>
-      <li><span class="ico">@</span>contact@back-to-dakar.at</li>
-      <li><span class="ico">W</span>www.back-to-dakar.at</li>
-      
-    </ul>
-  </div>
-  <div class="cf reveal">
-    <div class="cf-title" data-i18n="f_title">ENVOYEZ-NOUS UN MESSAGE</div>
-    <form action="https://formspree.io/f/xeedoeng" onsubmit="handleForm(event)">
-      <div class="frow">
-        <div class="fg"><label data-i18n="f_fn">Prénom</label><input type="text" name="prenom" required placeholder="Votre prénom"></div>
-        <div class="fg"><label data-i18n="f_ln">Nom</label><input type="text" name="nom" placeholder="Votre nom"></div>
-      </div>
-      <div class="fg"><label data-i18n="f_em">Email</label><input type="email" name="_replyto" required placeholder="votre@email.com"></div>
-      <div class="fg"><label data-i18n="f_co">Pays</label><input type="text" name="pays" placeholder="Autriche, Allemagne, France..."></div>
-      <div class="fg">
-        <label data-i18n="f_in">Je suis intéressé par</label>
-        <select name="interet">
-          <option data-i18n="f_o0">Choisissez...</option>
-          <option data-i18n="f_o1">Travel Support Moto</option>
-          <option data-i18n="f_o2">Expédition Afrique</option>
-          <option data-i18n="f_o3">Scouting / Reconnaissance</option>
-          <option data-i18n="f_o4">Support Événement</option>
-          <option data-i18n="f_o5">Partenariat</option>
-          <option data-i18n="f_o6">Informations générales</option>
-        </select>
-      </div>
-      <div class="fg"><label data-i18n="f_ms">Message</label><textarea name="message" placeholder="Décrivez votre projet..."></textarea></div>
-      <input type="hidden" name="_subject" value="Nouveau message BACK TO DAKAR">
-      <input type="hidden" name="_next" value="https://back-to-dakar.at">
-      <button type="submit" class="fsub" data-i18n="f_sb">Envoyer →</button>
-      <p class="flegal" data-i18n="f_lg">Données traitées conformément au RGPD.</p>
-    </form>
-    <div class="fsuccess" id="fok"><p data-i18n="f_ok">✓ Message envoyé — Réponse sous 48h. L'aventure commence !</p></div>
-  </div>
-</section>
-
-<footer>
-  <div class="ft">
-    <div class="fb">
-      <a class="nav-logo" href="#">BACK <span>TO</span> DAKAR</a>
-      <p data-i18n="ft_d">Specialized Offroad Support & Logistics — De Linz à Dakar, une histoire vraie.</p>
-    </div>
-    <div class="fc">
-      <h4 data-i18n="ft_n">Navigation</h4>
-      <ul>
-        <li><a href="#about" data-i18n="nav_about">Histoire</a></li>
-        <li><a href="#services" data-i18n="nav_services">Services</a></li>
-        <li><a href="#route" data-i18n="nav_route">La Route</a></li>
-        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="fc">
-      <h4 data-i18n="ft_i">Informations</h4>
-      <ul>
-        <li><a href="#" data-i18n="ft_l">Mentions légales</a></li>
-        <li><a href="#" data-i18n="ft_g">RGPD</a></li>
-        <li><a href="#contact" data-i18n="ft_p">Partenariats</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="fb-bot">
-    <span class="fc2" data-i18n="ft_c">© 2026 BACK TO DAKAR — EPU Autriche. Tous droits réservés.</span>
-    <span class="fc2">Né à Dakar — Basé à Linz</span>
-  </div>
-</footer>
+  <footer class="foot">
+    <a href="mailto:contact@back-to-dakar.at">contact@back-to-dakar.at</a>
+    <span class="coord">14.7°N&nbsp;&nbsp;17.4°W</span>
+  </footer>
 
 <script>
-const T={
-  fr:{
-    nav_about:"Histoire",nav_services:"Services",nav_route:"La Route",nav_s2:"Expertise",nav_contact:"Contact",
-    h_eye:"Autriche → Sénégal — Pistes Historiques Paris-Dakar",
-    h_tag:"Né à Dakar, basé à Linz — je vous ramène là où tout a commencé.",
-    h_cta1:"Découvrir nos services",h_cta2:"Nous contacter",
-    s1:"Kilomètres parcourus",s2:"Jours d’expédition",s3:"Pays traversés",s4:"Participants max",
-    av_tag:"Véhicule d’expédition",
-    a_eye:"Notre Histoire",a_title:"UNE LÉGITIMITÉ<br>INCONTESTABLE",
-    a_p1:"Né à Dakar et établi en Autriche, le fondateur de BACK TO DAKAR a grandi entre deux mondes. Il connaît ces pistes depuis l’enfance — les routes du Sénégal, les pistes de Mauritanie, les dunes du Sahara marocain.",
-    a_p2:"BACK TO DAKAR n’est pas une agence de voyage. C’est un service de support logistique spécialisé — vous décidez où vous allez, nous sommes là pour vous accompagner en toute sécurité.",
-    a_quote:"\"Né à Dakar, basé à Linz — je vous ramène là où tout a commencé.\"",
-    a_cta:"Nous rejoindre",
-    sv_eye:"Nos Services Principaux",sv_title:"SUPPORT LOGISTIQUE<br>OFFROAD & MOTO",
-    sv1_t:"Travel Support Moto",sv1_d:"Votre groupe de motards roule librement — nous vous accompagnons avec notre Toyota Hilux et remorque HUMER (6 motos). Bagages, pièces de rechange, sécurité terrain : vous avancez l’esprit libre en Europe et en Afrique.",
-    sv1_t1:"EU + Afrique",sv1_t2:"6 motos max",sv1_t3:"Hilux + HUMER",sv1_t4:"Devis sur demande",
-    sv2_t:"Expéditions Afrique",sv2_d:"Support logistique complet pour vos expéditions sur les pistes historiques du Paris-Dakar. De l’Autriche au Sénégal en passant par le Maroc et la Mauritanie — avec un guide qui connaît ces terres depuis l’enfance.",
-    sv2_t1:"28 jours",sv2_t2:"Max 8 personnes",sv2_t3:"Devis sur demande",
-    r_eye:"L’Itinéraire",r_title:"LA ROUTE<br>LÉGENDAIRE",r_sub:"~12.500 km sur les pistes historiques du Paris-Dakar, à travers 4 pays et des paysages inoubliables.",
-    r1:"Autriche — Départ",r2:"Espagne — Ferry",r3:"Pistes du Sahara",r4:"Désert de l’Erg",r5:"Sénégal — Arrivée",
-    ri1:"Distance aller-retour",ri2:"Circuit complet",
-    e_eye:"Services Complémentaires",e_title:"EXPERTISE<br>TERRAIN",
-    e1_t:"Scouting & Reconnaissance",e1_d:"Repérage de pistes, validation de parcours, préparation de roadbooks de navigation pour clubs et organisateurs d’événements.",
-    e2_t:"Support Événement Offroad",e2_d:"Assistance logistique, sécurité terrain et support bivouac pour vos événements offroad, rallyes amateurs et raids.",
-    e3_t:"Assistance Bagages",e3_d:"Transport de bagages pour les groupes moto qui préfèrent voyager léger. Votre moto reste agile, vos affaires voyagent en sécurité.",
-    e4_t:"Partenariats Clubs",e4_d:"Nous collaborons avec les clubs moto et associations offroad. Contactez-nous pour discuter d’un partenariat adapté à votre structure.",
-    c_eye:"Nous Rejoindre",c_title:"PRÊT POUR<br>L’AVENTURE ?",
-    c_p:"Que vous souhaitiez un devis, rejoindre une expédition ou simplement en savoir plus — nous sommes là.",
-    
-    f_title:"ENVOYEZ-NOUS UN MESSAGE",
-    f_fn:"Prénom",f_ln:"Nom",f_em:"Email",f_co:"Pays",f_in:"Je suis intéressé par",
-    f_o0:"Choisissez...",f_o1:"Travel Support Moto",f_o2:"Expédition Afrique",
-    f_o3:"Scouting / Reconnaissance",f_o4:"Support Événement",f_o5:"Partenariat",f_o6:"Informations générales",
-    f_ms:"Message",f_sb:"Envoyer →",f_lg:"Données traitées conformément au RGPD.",
-    f_ok:"✓ Message envoyé — Réponse sous 48h. L’aventure commence !",
-    ft_d:"Specialized Offroad Support & Logistics — De Linz à Dakar, une histoire vraie.",
-    ft_n:"Navigation",ft_i:"Informations",ft_l:"Mentions légales",ft_g:"RGPD",ft_p:"Partenariats",
-    g_eye:"Nos Expéditions",g_title:"SUR LE TERRAIN<br>DEPUIS 2019",h_eye:"Aventure & Humanité",h_title:"AVENTURE & HUMANITÉ",h_quote:"&ldquo;Cultivons l&rsquo;humain qui sommeille en nous, dans un esprit de partage et d&rsquo;humanit&eacute;.&rdquo;",ft_c:"© 2026 BACK TO DAKAR — EPU Autriche. Tous droits réservés.",
-  },
-  de:{
-    nav_about:"Geschichte",nav_services:"Leistungen",nav_route:"Die Route",nav_s2:"Expertise",nav_contact:"Kontakt",
-    h_eye:"Österreich → Senegal — Historische Paris-Dakar-Pisten",
-    h_tag:"In Dakar geboren, in Linz zuhause — ich bringe Sie dorthin zurück, wo alles begann.",
-    h_cta1:"Unsere Leistungen",h_cta2:"Kontakt aufnehmen",
-    s1:"Kilometer zurückgelegt",s2:"Expeditionstage",s3:"Durchquerte Länder",s4:"Max. Teilnehmer",
-    av_tag:"Expeditionsfahrzeug",
-    a_eye:"Unsere Geschichte",a_title:"UNBESTREITBARE<br>KOMPETENZ",
-    a_p1:"In Dakar geboren und in Österreich ansässig, wuchs der Gründer von BACK TO DAKAR zwischen zwei Welten auf. Er kennt diese Pisten seit seiner Kindheit — die Straßen Senegals, die Pisten Mauretaniens, die Dünen des marokkanischen Sahara.",
-    a_p2:"BACK TO DAKAR ist kein Reisebüro. Es ist ein spezialisierter Logistik-Supportdienst — Sie entscheiden, wohin Sie fahren, wir sind für Ihre Sicherheit da.",
-    a_quote:"\"In Dakar geboren, in Linz zuhause — ich bringe Sie dorthin zurück, wo alles begann.\"",
-    a_cta:"Uns begleiten",
-    sv_eye:"Hauptleistungen",sv_title:"OFFROAD & MOTORRAD<br>LOGISTIK-SUPPORT",
-    sv1_t:"Motorrad Travel Support",sv1_d:"Ihre Motorradgruppe fährt frei — wir begleiten Sie mit unserem Toyota Hilux und HUMER-Anhänger (6 Motorräder). Gepäck, Ersatzteile, Sicherheit: Sie fahren sorgenfrei in Europa und Afrika.",
-    sv1_t1:"EU + Afrika",sv1_t2:"6 Motorräder max",sv1_t3:"Hilux + HUMER",sv1_t4:"Angebot auf Anfrage",
-    sv2_t:"Afrika-Expeditionen",sv2_d:"Vollständiger Logistik-Support für Ihre Expeditionen auf den historischen Paris-Dakar-Pisten. Von Österreich bis Senegal über Marokko und Mauretanien — mit einem Guide, der dieses Terrain seit seiner Kindheit kennt.",
-    sv2_t1:"28 Tage",sv2_t2:"Max. 8 Personen",sv2_t3:"Angebot auf Anfrage",
-    r_eye:"Die Strecke",r_title:"DIE LEGENDÄRE<br>ROUTE",r_sub:"~12.500 km auf den historischen Paris-Dakar-Pisten, durch 4 Länder und unvergessliche Landschaften.",
-    r1:"Österreich — Abfahrt",r2:"Spanien — Fähre",r3:"Sahara-Pisten",r4:"Erg-Wüste",r5:"Senegal — Ankunft",
-    ri1:"Gesamtstrecke Hin- und Rückfahrt",ri2:"Gesamtschaltkreis",
-    e_eye:"Ergänzungsleistungen",e_title:"TERRAIN-<br>EXPERTISE",
-    e1_t:"Scouting & Streckenaufklärung",e1_d:"Pistenaufklärung, Streckenvalidierung, Roadbook-Erstellung für Clubs und Veranstalter.",
-    e2_t:"Offroad-Event-Support",e2_d:"Logistikassistenz, Geländesicherheit und Biwak-Support für Offroad-Events, Amateur-Rallyes und Raids.",
-    e3_t:"Gepäckassistenz",e3_d:"Gepäcktransport für Motorradgruppen, die leicht reisen möchten. Ihr Motorrad bleibt wendig, Ihr Gepäck reist sicher.",
-    e4_t:"Club-Partnerschaften",e4_d:"Wir arbeiten mit Motorradclubs und Offroad-Vereinen zusammen. Kontaktieren Sie uns für eine Partnerschaftsdiskussion.",
-    c_eye:"Mitmachen",c_title:"BEREIT FÜR<br>DAS ABENTEUER?",
-    c_p:"Ob Angebot, Expedition oder einfach mehr Informationen — wir sind da.",
-    
-    f_title:"SENDEN SIE UNS EINE NACHRICHT",
-    f_fn:"Vorname",f_ln:"Nachname",f_em:"E-Mail",f_co:"Land",f_in:"Ich interessiere mich für",
-    f_o0:"Wählen...",f_o1:"Motorrad Travel Support",f_o2:"Afrika-Expedition",
-    f_o3:"Scouting / Aufklärung",f_o4:"Event-Support",f_o5:"Partnerschaft",f_o6:"Allgemeine Informationen",
-    f_ms:"Nachricht",f_sb:"Senden →",f_lg:"Daten gemäß DSGVO verarbeitet.",
-    f_ok:"✓ Nachricht gesendet — Antwort innerhalb 48 Stunden.",
-    ft_d:"Specialized Offroad Support & Logistics — Von Linz nach Dakar, eine wahre Geschichte.",
-    ft_n:"Navigation",ft_i:"Informationen",ft_l:"Impressum",ft_g:"DSGVO",ft_p:"Partnerschaften",
-    g_eye:"Unsere Expeditionen",g_title:"IM GELÄNDE<br>SEIT 2019",h_eye:"Abenteuer & Menschlichkeit",h_title:"ABENTEUER & MENSCHLICHKEIT",h_quote:"&ldquo;Pflegen wir das Menschliche in uns, im Geiste des Teilens und der Menschlichkeit.&rdquo;",ft_c:"© 2026 BACK TO DAKAR — EPU Österreich. Alle Rechte vorbehalten.",
-  },
-  en:{
-    nav_about:"Story",nav_services:"Services",nav_route:"The Route",nav_s2:"Expertise",nav_contact:"Contact",
-    h_eye:"Austria → Senegal — Historic Paris-Dakar Tracks",
-    h_tag:"Born in Dakar, based in Linz — I bring you back to where it all began.",
-    h_cta1:"Discover our services",h_cta2:"Contact us",
-    s1:"Kilometres covered",s2:"Expedition days",s3:"Countries crossed",s4:"Max participants",
-    av_tag:"Expedition vehicle",
-    a_eye:"Our Story",a_title:"UNDENIABLE<br>LEGITIMACY",
-    a_p1:"Born in Dakar and living in Austria, the founder of BACK TO DAKAR grew up between two worlds. He has known these tracks since childhood — the roads of Senegal, the pistes of Mauritania, the dunes of the Moroccan Sahara.",
-    a_p2:"BACK TO DAKAR is not a travel agency. It is a specialised logistical support service — you decide where you go, we are there to accompany you safely.",
-    a_quote:"\"Born in Dakar, based in Linz — I bring you back to where it all began.\"",
-    a_cta:"Join us",
-    sv_eye:"Main Services",sv_title:"OFFROAD & MOTORCYCLE<br>LOGISTICAL SUPPORT",
-    sv1_t:"Motorcycle Travel Support",sv1_d:"Your motorcycle group rides freely — we accompany you with our Toyota Hilux and HUMER trailer (6 motorcycles). Luggage, spare parts, safety: you ride with complete peace of mind across Europe and Africa.",
-    sv1_t1:"EU + Africa",sv1_t2:"6 motorcycles max",sv1_t3:"Hilux + HUMER",sv1_t4:"Quote on request",
-    sv2_t:"Africa Expeditions",sv2_d:"Complete logistical support for your expeditions on the historic Paris-Dakar tracks. From Austria to Senegal via Morocco and Mauritania — with a guide who has known this terrain since childhood.",
-    sv2_t1:"28 days",sv2_t2:"Max 8 people",sv2_t3:"Quote on request",
-    r_eye:"The Itinerary",r_title:"THE LEGENDARY<br>ROUTE",r_sub:"~12,500 km on the historic Paris-Dakar tracks, through 4 countries and unforgettable landscapes.",
-    r1:"Austria — Departure",r2:"Spain — Ferry",r3:"Sahara Tracks",r4:"Erg Desert",r5:"Senegal — Arrival",
-    ri1:"Total return distance",ri2:"Full circuit",
-    e_eye:"Complementary Services",e_title:"FIELD<br>EXPERTISE",
-    e1_t:"Scouting & Route Reconnaissance",e1_d:"Track scouting, route validation, navigation roadbook preparation for clubs and event organisers.",
-    e2_t:"Offroad Event Support",e2_d:"Logistical assistance, field safety and bivouac support for offroad events, amateur rallies and raids.",
-    e3_t:"Luggage Assistance",e3_d:"Luggage transport for motorcycle groups who prefer to travel light. Your bike stays agile, your gear travels safely.",
-    e4_t:"Club Partnerships",e4_d:"We collaborate with motorcycle clubs and offroad associations. Contact us to discuss a partnership.",
-    c_eye:"Join Us",c_title:"READY FOR<br>THE ADVENTURE?",
-    c_p:"Whether you want a quote, to join an expedition or simply find out more — we are here.",
-    
-    f_title:"SEND US A MESSAGE",
-    f_fn:"First name",f_ln:"Last name",f_em:"Email",f_co:"Country",f_in:"I am interested in",
-    f_o0:"Choose...",f_o1:"Motorcycle Travel Support",f_o2:"Africa Expedition",
-    f_o3:"Scouting / Reconnaissance",f_o4:"Event Support",f_o5:"Partnership",f_o6:"General information",
-    f_ms:"Message",f_sb:"Send →",f_lg:"Data processed in accordance with GDPR.",
-    f_ok:"✓ Message sent — We will reply within 48 hours. The adventure begins!",
-    ft_d:"Specialized Offroad Support & Logistics — From Linz to Dakar, a true story.",
-    ft_n:"Navigation",ft_i:"Information",ft_l:"Legal notice",ft_g:"GDPR",ft_p:"Partnerships",
-    g_eye:"Our Expeditions",g_title:"IN THE FIELD<br>SINCE 2019",h_eye:"Adventure & Humanity",h_title:"ADVENTURE & HUMANITY",h_quote:"&ldquo;Let us cultivate the human within us, in a spirit of sharing and humanity.&rdquo;",ft_c:"© 2026 BACK TO DAKAR — EPU Austria. All rights reserved.",
-  }
-};
-
-let lang='fr';
-function setLang(l){
-  lang=l;
-  const t=T[l];
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    if(t[k]!==undefined)el.innerHTML=t[k];
-  });
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
-  document.documentElement.lang=l;
-}
-
-function openLightbox(src){
-  document.getElementById('lightbox-img').src=src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
-
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
-
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}
-  });
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-function handleForm(e){
-  e.preventDefault();
-  const form=e.target;
-  const data=new FormData(form);
-  fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
-    .then(r=>{
-      if(r.ok){
-        document.getElementById('fok').style.display='block';
-        form.style.display='none';
-      } else {
-        alert('Erreur envoi — réessayez ou écrivez à contact@back-to-dakar.at');
-      }
-    })
-    .catch(()=>alert('Erreur réseau — écrivez à contact@back-to-dakar.at'));
-}
+  var langs=[
+    {code:"DE",text:"Demnächst verfügbar"},
+    {code:"FR",text:"Bientôt disponible"},
+    {code:"NL",text:"Binnenkort beschikbaar"},
+    {code:"ES",text:"Próximamente"},
+    {code:"PT",text:"Em breve"},
+    {code:"EN",text:"Coming soon"}
+  ];
+  var i=0,soon=document.getElementById("soon"),codeEl=document.getElementById("code"),phraseEl=document.getElementById("phrase");
+  setInterval(function(){
+    soon.classList.add("fade");
+    setTimeout(function(){
+      i=(i+1)%langs.length;
+      codeEl.textContent=langs[i].code;
+      phraseEl.textContent=langs[i].text;
+      soon.classList.remove("fade");
+    },500);
+  },2400);
 </script>
 </body>
 </html>
