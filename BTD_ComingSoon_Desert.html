@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BACK TO DAKAR</title>
+<meta name="description" content="BACK TO DAKAR">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#4a3826;        /* deep warm brown */
+    --ink-dim:#7c6446;    /* muted brown */
+    --ink-faint:rgba(63,51,32,.6);
+    --line:rgba(74,56,38,.22);
+    --ochre:#8a5a1f;      /* rich desert accent */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    height:100vh;overflow:hidden;position:relative;
+    color:var(--ink);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    background:linear-gradient(to bottom,#f5e7c6 0%,#efd6a6 38%,#e6c489 68%,#deb678 100%);
+  }
+  /* soft desert sun */
+  .sun{
+    position:absolute;z-index:0;top:6%;left:50%;transform:translateX(-50%);
+    width:min(64vmin,520px);aspect-ratio:1;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle,rgba(255,248,228,.95) 0%,rgba(255,240,205,.45) 32%,rgba(255,236,196,0) 70%);
+    opacity:0;animation:glow 1.6s ease .2s forwards;
+  }
+  /* layered dunes */
+  .dune{position:absolute;z-index:1;left:50%;border-radius:50%;pointer-events:none;}
+  .d1{width:210vw;height:92vh;bottom:-60vh;transform:translateX(-52%);background:#dcb673;}
+  .d2{width:178vw;height:82vh;bottom:-53vh;transform:translateX(-44%);background:#cea052;}
+  .d3{width:158vw;height:72vh;bottom:-46vh;transform:translateX(-56%);background:#bd8a44;}
+  .dune{opacity:0;animation:rise 1.3s ease forwards;}
+  .d1{animation-delay:.55s}.d2{animation-delay:.7s}.d3{animation-delay:.85s}
+
+  /* subtle grain */
+  body::after{
+    content:"";position:fixed;inset:-150%;z-index:2;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 7s steps(6) infinite;
+  }
+  @keyframes grain{0%{transform:translate(0,0)}16%{transform:translate(-4%,3%)}33%{transform:translate(3%,-4%)}50%{transform:translate(-3%,2%)}66%{transform:translate(4%,3%)}83%{transform:translate(-2%,-3%)}100%{transform:translate(0,0)}}
+
+  .wrap{
+    position:relative;z-index:5;height:100%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:clamp(24px,6vw,64px);padding-bottom:22vh;text-align:center;
+  }
+  .tag{
+    font-size:clamp(9px,1.6vw,11px);letter-spacing:.42em;text-transform:uppercase;
+    color:var(--ink-dim);margin-bottom:clamp(26px,6vh,52px);
+    opacity:0;animation:rise 1s ease .15s forwards;
+  }
+  .mark{font-family:"Oswald",sans-serif;line-height:.92;}
+  .mark .top{
+    display:block;font-weight:300;font-size:clamp(20px,5vw,34px);
+    letter-spacing:.6em;text-indent:.6em;color:var(--ink);
+    opacity:0;animation:rise 1s ease .3s forwards;
+  }
+  .mark .main{
+    display:block;font-weight:700;font-size:clamp(56px,16vw,162px);letter-spacing:.05em;
+    margin-top:clamp(4px,1vh,10px);color:var(--ink);
+    text-shadow:0 2px 22px rgba(120,80,30,.18);
+    opacity:0;animation:rise 1.1s ease .45s forwards;
+  }
+  .horizon{
+    width:0;height:2px;margin:clamp(24px,5vh,44px) 0;
+    background:linear-gradient(90deg,transparent,var(--ochre),transparent);
+    box-shadow:0 0 12px 1px rgba(138,90,31,.3);
+    animation:stretch 1.4s cubic-bezier(.2,.7,.2,1) .95s forwards;
+  }
+  .soon{
+    height:1.7em;display:flex;align-items:center;justify-content:center;gap:.85em;
+    opacity:0;animation:rise 1s ease 1.2s forwards;
+  }
+  .soon .code{
+    font-size:clamp(10px,1.7vw,12px);font-weight:500;letter-spacing:.22em;
+    color:var(--ochre);border:1px solid var(--line);padding:.28em .5em;border-radius:2px;
+    transition:opacity .5s ease;
+  }
+  .soon .phrase{
+    font-family:"Oswald",sans-serif;font-weight:500;
+    font-size:clamp(16px,3.4vw,26px);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink);transition:opacity .5s ease;
+  }
+  .soon.fade .code,.soon.fade .phrase{opacity:0}
+  .foot{
+    position:fixed;left:0;right:0;bottom:clamp(16px,4vh,30px);z-index:6;
+    display:flex;flex-direction:column;align-items:center;gap:.6em;
+    opacity:0;animation:rise 1s ease 1.55s forwards;
+  }
+  .foot a{
+    color:#3f3320;text-decoration:none;font-size:clamp(11px,2vw,13px);letter-spacing:.16em;
+    border-bottom:1px solid rgba(63,51,32,.35);padding-bottom:2px;transition:opacity .3s ease;
+  }
+  .foot a:hover{opacity:.65}
+  .foot .coord{font-size:clamp(8px,1.5vw,10px);letter-spacing:.3em;color:rgba(63,51,32,.6);text-transform:uppercase;}
+
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes glow{from{opacity:0}to{opacity:1}}
+  @keyframes stretch{from{width:0}to{width:min(280px,52vw)}}
+  .d1{animation-name:duneRise}.d2{animation-name:duneRise}.d3{animation-name:duneRise}
+  @keyframes duneRise{from{opacity:0;transform:translateX(var(--tx,-50%)) translateY(24px)}to{opacity:1}}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .sun,.tag,.mark .top,.mark .main,.soon,.foot,.dune{opacity:1}
+    .horizon{width:min(280px,52vw)}
+    body::after{display:none}
+  }
+</style>
+</head>
+<body>
+  <div class="sun" aria-hidden="true"></div>
+  <div class="dune d1" aria-hidden="true"></div>
+  <div class="dune d2" aria-hidden="true"></div>
+  <div class="dune d3" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <div class="tag">Europe&nbsp;&middot;&nbsp;Sénégal</div>
+    <h1 class="mark">
+      <span class="top">Back&nbsp;to</span>
+      <span class="main">DAKAR</span>
+    </h1>
+    <div class="horizon"></div>
+    <div class="soon" id="soon" aria-live="polite">
+      <span class="code" id="code">DE</span>
+      <span class="phrase" id="phrase">Demnächst verfügbar</span>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <a href="mailto:contact@back-to-dakar.at">contact@back-to-dakar.at</a>
+    <span class="coord">14.7°N&nbsp;&nbsp;17.4°W</span>
+  </footer>
+
+<script>
+  var langs=[
+    {code:"DE",text:"Demnächst verfügbar"},
+    {code:"FR",text:"Bientôt disponible"},
+    {code:"NL",text:"Binnenkort beschikbaar"},
+    {code:"ES",text:"Próximamente"},
+    {code:"PT",text:"Em breve"},
+    {code:"EN",text:"Coming soon"}
+  ];
+  var i=0,soon=document.getElementById("soon"),codeEl=document.getElementById("code"),phraseEl=document.getElementById("phrase");
+  setInterval(function(){
+    soon.classList.add("fade");
+    setTimeout(function(){
+      i=(i+1)%langs.length;
+      codeEl.textContent=langs[i].code;
+      phraseEl.textContent=langs[i].text;
+      soon.classList.remove("fade");
+    },500);
+  },2400);
+</script>
+</body>
+</html>
